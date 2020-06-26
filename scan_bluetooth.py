@@ -3,13 +3,15 @@
 from bluetooth import *
 
 def scan_devices():
+	#Scanning all the nearby available bluetooth devices
 	nearby_devices = discover_devices(lookup_names = True)
 	return nearby_devices
-	
+
+#request_device: Name of the desired device user wishes to search. ex:"Honor 9 Lite"
 def check_device(request_device):
-	#print ("This script scans nearby bluetooth devices. Please wait...")
 	nearby_devices = discover_devices(lookup_names = True)
-	#print ("Found ",len(nearby_devices)," devices")
+	#Check if the user provided device is in the available devices
+	#If yes then respective address of the device is returned else none is returned
 	for addr, name in nearby_devices:
 		k = False
 		if request_device.lower() in name.lower():
